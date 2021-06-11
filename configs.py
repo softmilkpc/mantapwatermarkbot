@@ -12,7 +12,7 @@ class Config(object):
 	DOWN_PATH = os.environ.get("DOWN_PATH", "./downloads")
 	PRESET = os.environ.get("PRESET", "ultrafast")
 	OWNER_ID = int(os.environ.get("OWNER_ID", 1290356065))
-	CAPTION = "Channel @mantapvids"
+	CAPTION = " @mantapvids"
 	BOT_USERNAME = os.environ.get("BOT_USERNAME", "mantapwatermarkbot")
 	DATABASE_URL = os.environ.get("DATABASE_URL")
 	BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
