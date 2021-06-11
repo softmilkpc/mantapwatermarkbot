@@ -18,11 +18,11 @@ class Config(object):
 	BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
 	ALLOW_UPLOAD_TO_STREAMTAPE = bool(os.environ.get("ALLOW_UPLOAD_TO_STREAMTAPE", True))
 	USAGE_WATERMARK_ADDER = """
-Hi, I am Video Mantap Watermark Adder Bot!
-**How to Added Watermark to a Video?**
-**Usage:** Pertama kirimin satu foto/logo lalu kirim video apa aja biar nongol watermarknya.
+Hellowwww, Kenalin gw kang watermark video bot dari @mantapvids !
+**Cara nambahin Watermark ke video?**
+**Cara pakai:** Pertama kirimin satu foto/logo lalu kirim video apa aja biar nongol watermarknya.\n
 __Note: Gw cuma bisa ngolah 1 video dalam sekali kirim, jadi jangan di spam ngirim video!!.).__
-Proccess by @mantapvids/n
+Proccess by @mantapvids\n\n
 Donate : https://saweria.co/mantapjozz
 """
 	PROGRESS = """
