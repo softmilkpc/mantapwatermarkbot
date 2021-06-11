@@ -10,7 +10,7 @@ async def send_video_handler(bot, cmd, output_vid, video_thumbnail, duration, wi
     sent_vid = await bot.send_video(
         chat_id=cmd.chat.id,
         video=output_vid,
-        caption=f"**Channel:** `{Config.CAPTION}`\n\n**Video Duration:** `{format_timespan(duration)}`\n**File Size:** `{humanbytes(file_size)}`\n",
+        caption=f"**Channel:** {Config.CAPTION}\n\n**Video Duration:** `{format_timespan(duration)}`\n**File Size:** `{humanbytes(file_size)}`\n",
         thumb=video_thumbnail,
         duration=duration,
         width=width,
