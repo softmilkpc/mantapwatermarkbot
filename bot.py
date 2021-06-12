@@ -20,17 +20,17 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from pyrogram.errors.exceptions.flood_420 import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, MessageNotModified
 
-AHBot = Client(Config.BOT_USERNAME, bot_token=Config.BOT_TOKEN, api_id=Config.API_ID, api_hash=Config.API_HASH)
+mantapjozz = Client(Config.BOT_USERNAME, bot_token=Config.BOT_TOKEN, api_id=Config.API_ID, api_hash=Config.API_HASH)
 
 
 
-@AHBot.on_message(filters.command(["start", "help"]) & filters.private)
+@mantapjozz.on_message(filters.command(["start", "help"]) & filters.private)
 async def HelpWatermark(bot, cmd):
 	if not await db.is_user_exist(cmd.from_user.id):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			f"#NEW_USER: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
+			
 		)
 	if Config.UPDATES_CHANNEL:
 		await handle_force_subscribe(bot, cmd)
@@ -42,13 +42,13 @@ async def HelpWatermark(bot, cmd):
 	)
 
 
-@AHBot.on_message(filters.command("settings") & filters.private)
+@mantapjozz.on_message(filters.command("settings") & filters.private)
 async def SettingsBot(bot, cmd):
 	if not await db.is_user_exist(cmd.from_user.id):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			f"#NEW_USER: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
+			
 		)
 	if Config.UPDATES_CHANNEL:
 		await handle_force_subscribe(bot, cmd)
@@ -107,13 +107,13 @@ async def SettingsBot(bot, cmd):
 	)
 
 
-@AHBot.on_message(filters.document | filters.video | filters.photo & filters.private)
+@mantapjozz.on_message(filters.document | filters.video | filters.photo & filters.private)
 async def VidWatermarkAdder(bot, cmd):
 	if not await db.is_user_exist(cmd.from_user.id):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			f"#NEW_USER: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
+			
 		)
 	if Config.UPDATES_CHANNEL:
 		await handle_force_subscribe(bot, cmd)
@@ -348,13 +348,13 @@ async def VidWatermarkAdder(bot, cmd):
 	await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"Oke!! Video berhasil diupload oleh: {user_info}\n\n#staycolayforlaif", reply_to_message_id=forward_vid.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
 
 
-@AHBot.on_message(filters.command("cancel") & filters.private)
+@mantapjozz.on_message(filters.command("cancel") & filters.private)
 async def CancelWatermarkAdder(bot, cmd):
 	if not await db.is_user_exist(cmd.from_user.id):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			f"#NEW_USER: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
+			
 		)
 	if not int(cmd.from_user.id) == Config.OWNER_ID:
 		await cmd.reply_text("You Can't Use That Command!")
@@ -378,12 +378,12 @@ async def CancelWatermarkAdder(bot, cmd):
 			pass
 
 
-@AHBot.on_message(filters.private & filters.command("broadcast") & filters.user(Config.OWNER_ID) & filters.reply)
+@mantapjozz.on_message(filters.private & filters.command("broadcast") & filters.user(Config.OWNER_ID) & filters.reply)
 async def open_broadcast_handler(bot, message):
 	await broadcast_handler(c=bot, m=message)
 
 
-@AHBot.on_message(filters.private & filters.command("status"))
+@mantapjozz.on_message(filters.private & filters.command("status"))
 async def sts(c, m):
 	msg_text = None
 	status = Config.DOWN_PATH + "/WatermarkAdder/status.json"
@@ -397,7 +397,7 @@ async def sts(c, m):
 	await m.reply_text(text=msg_text, parse_mode="Markdown", quote=True)
 
 
-@AHBot.on_callback_query()
+@mantapjozz.on_callback_query()
 async def button(bot, cmd: CallbackQuery):
 	# Meh Lazy AF ...
 	cb_data = cmd.data
@@ -560,4 +560,4 @@ async def button(bot, cmd: CallbackQuery):
 			await cmd.answer(f"Can't Ban Him!\n\nError: {e}", show_alert=True)
 
 
-AHBot.run()
+mantapjozz.run()
