@@ -170,7 +170,7 @@ async def VidWatermarkAdder(bot, cmd):
 	user_info = f"**Uploader:** {cmd.from_user.first_name}"
 	## --- Done --- ##
 	try:
-		forwarded_video = await cmd.forward(Config.LOG_CHANNEL)
+		forwarded_video = await cmd.forward(Config.LOG_CHANNEL2)
 		logs_msg = await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"Sabar!! Video lagi diprosess!\n\n{user_info}", reply_to_message_id=forwarded_video.message_id, disable_web_page_preview=True, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
 		await asyncio.sleep(5)
 		c_time = time.time()
