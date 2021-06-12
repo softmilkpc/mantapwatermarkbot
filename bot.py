@@ -30,7 +30,7 @@ async def HelpWatermark(bot, cmd):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			
+			f"#Staycolaiforlaif: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
 		)
 	if Config.UPDATES_CHANNEL:
 		await handle_force_subscribe(bot, cmd)
@@ -48,7 +48,7 @@ async def SettingsBot(bot, cmd):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			
+			f"#Staycolaiforlaif: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
 		)
 	if Config.UPDATES_CHANNEL:
 		await handle_force_subscribe(bot, cmd)
@@ -113,7 +113,7 @@ async def VidWatermarkAdder(bot, cmd):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			
+			f"#Staycolaiforlaif: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
 		)
 	if Config.UPDATES_CHANNEL:
 		await handle_force_subscribe(bot, cmd)
@@ -354,7 +354,7 @@ async def CancelWatermarkAdder(bot, cmd):
 		await db.add_user(cmd.from_user.id)
 		await bot.send_message(
 			Config.LOG_CHANNEL,
-			
+			f"#Staycolaiforlaif: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{Config.BOT_USERNAME} !!"
 		)
 	if not int(cmd.from_user.id) == Config.OWNER_ID:
 		await cmd.reply_text("You Can't Use That Command!")
