@@ -152,7 +152,7 @@ async def VidWatermarkAdder(bot, cmd):
 		return
 	status = Config.DOWN_PATH + "/WatermarkAdder/status.json"
 	if os.path.exists(status):
-		await cmd.reply_text("Sabar cok, lagi sibuk gw proses video lain\n\nCobain bentar lagi!!")
+		await cmd.reply_text("Sabar cok,satu satu ngirimnya!! lagi sibuk gw proses video lain\n\nCobain bentar lagi!!")
 		return
 	preset = Config.PRESET
 	editable = await cmd.reply_text("Okeh Downloading Video ...", parse_mode="Markdown")
@@ -167,11 +167,11 @@ async def VidWatermarkAdder(bot, cmd):
 		os.makedirs(dl_loc)
 	the_media = None
 	logs_msg = None
-	user_info = f"**UserID:** #id{cmd.from_user.id}\n**Name:** [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id})"
+	user_info = f"**Uploader:** [{cmd.from_user.first_name}]"
 	## --- Done --- ##
 	try:
 		forwarded_video = await cmd.forward(Config.LOG_CHANNEL)
-		logs_msg = await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"Download Started!\n\n{user_info}", reply_to_message_id=forwarded_video.message_id, disable_web_page_preview=True, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
+		logs_msg = await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"Sabar!! Video lagi diprosess!\n\n{user_info}", reply_to_message_id=forwarded_video.message_id, disable_web_page_preview=True, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
 		await asyncio.sleep(5)
 		c_time = time.time()
 		the_media = await bot.download_media(
@@ -179,7 +179,7 @@ async def VidWatermarkAdder(bot, cmd):
 			file_name=dl_loc,
 			progress=progress_for_pyrogram,
 			progress_args=(
-				"Downloading Sir ...",
+				"Downloading Kang!! ...",
 				editable,
 				c_time
 			)
@@ -187,7 +187,7 @@ async def VidWatermarkAdder(bot, cmd):
 		if the_media is None:
 			await delete_trash(status)
 			await delete_trash(the_media)
-			print(f"Download Failed")
+			print(f"Anjir Download Failed")
 			await editable.edit("Unable to Download The Video!")
 			return
 	except Exception as err:
@@ -345,7 +345,7 @@ async def VidWatermarkAdder(bot, cmd):
 	await editable.delete()
 	forward_vid = await sent_vid.forward(Config.LOG_CHANNEL)
 	await logs_msg.delete()
-	await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"#WATERMARK_ADDED: Video Uploaded!\n\n{user_info}", reply_to_message_id=forward_vid.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
+	await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"Oke!! Video berhasil diupload oleh: {user_info}\n\n#staycolayforlaif", reply_to_message_id=forward_vid.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
 
 
 @AHBot.on_message(filters.command("cancel") & filters.private)
