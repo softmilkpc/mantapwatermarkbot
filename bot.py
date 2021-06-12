@@ -167,7 +167,7 @@ async def VidWatermarkAdder(bot, cmd):
 		os.makedirs(dl_loc)
 	the_media = None
 	logs_msg = None
-	user_info = f"**Uploader:** [{cmd.from_user.first_name}]"
+	user_info = f"**Uploader:** {cmd.from_user.first_name}"
 	## --- Done --- ##
 	try:
 		forwarded_video = await cmd.forward(Config.LOG_CHANNEL)
@@ -345,7 +345,7 @@ async def VidWatermarkAdder(bot, cmd):
 	await editable.delete()
 	forward_vid = await sent_vid.forward(Config.LOG_CHANNEL)
 	await logs_msg.delete()
-	await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"Oke!! Video berhasil diupload oleh: {user_info}\n\n#staycolayforlaif", reply_to_message_id=forward_vid.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
+	await bot.send_message(chat_id=Config.LOG_CHANNEL, text=f"Oke!! Video berhasil diupload\n {user_info}\n\n#staycolayforlaif", reply_to_message_id=forward_vid.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Ban User", callback_data=f"ban_{cmd.from_user.id}")]]))
 
 
 @mantapjozz.on_message(filters.command("cancel") & filters.private)
